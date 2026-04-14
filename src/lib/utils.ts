@@ -1,52 +1,8 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import type { InboxItem, AnalyticsSummary, Restaurant, User } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
-}
-
-// Normalize API responses to support both snake_case and camelCase
-export function normalizeInboxItem(item: InboxItem): InboxItem {
-  return {
-    ...item,
-    requestType: item.request_type ?? item.requestType,
-    restaurantId: item.restaurant_id ?? item.restaurantId,
-    customerName: item.customer_name ?? item.customerName,
-    customerPhone: item.customer_phone ?? item.customerPhone,
-    createdAt: item.created_at ?? item.createdAt,
-  };
-}
-
-export function normalizeAnalytics(data: AnalyticsSummary): AnalyticsSummary {
-  return {
-    ...data,
-    restaurantId: data.restaurant_id ?? data.restaurantId,
-    restaurantName: data.restaurant_name ?? data.restaurantName,
-    totalRequests: data.total_requests ?? data.totalRequests,
-    byType: data.by_type ?? data.byType,
-    byStatus: data.by_status ?? data.byStatus,
-  };
-}
-
-export function normalizeRestaurant(data: Restaurant): Restaurant {
-  return {
-    ...data,
-    transferNumber: data.transfer_number ?? data.transferNumber,
-    hoursJson: data.hours_json ?? data.hoursJson,
-    readiness: {
-      ...data.readiness,
-      isReady: data.readiness.is_ready ?? data.readiness.isReady,
-      missingFields: data.readiness.missing_fields ?? data.readiness.missingFields,
-    },
-  };
-}
-
-export function normalizeUser(data: User): User {
-  return {
-    ...data,
-    restaurantId: data.restaurant_id ?? data.restaurantId,
-  };
 }
 
 export function formatRelativeTime(dateString: string): string {
@@ -62,9 +18,48 @@ export function formatRelativeTime(dateString: string): string {
   if (diffHours < 24) return `${diffHours}h ago`;
   if (diffDays === 1) return "Yesterday";
   if (diffDays < 7) return `${diffDays}d ago`;
-  
+
   return date.toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
   });
+}
+
+/**
+ * Get the Monday of the current week in YYYY-MM-DD format
+ */
+export function getWeekStartDate(): string {
+  const now = new Date();
+  const day = now.getDay();
+  const diff = now.getDate() - day + (day === 0 ? -6 : 1);
+  const monday = new Date(now.setDate(diff));
+  return monday.toISOString().split("T")[0];
+}
+
+/**
+ * Get today's date in YYYY-MM-DD format
+ */
+export function getTodayDate(): string {
+  return new Date().toISOString().split("T")[0];
+}
+
+/**
+ * Extract error message from FastAPI error response
+ */
+export function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+  if (typeof error === "object" && error !== null) {
+    const err = error as { response?: { data?: { detail?: string } }; message?: string };
+    if (err.response?.data?.detail) {
+      return typeof err.response.data.detail === "string"
+        ? err.response.data.detail
+        : JSON.stringify(err.response.data.detail);
+    }
+    if (err.message) {
+      return err.message;
+    }
+  }
+  return "An unexpected error occurred";
 }
