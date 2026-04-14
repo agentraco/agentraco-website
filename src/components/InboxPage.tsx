@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Inbox, ChevronLeft, ChevronRight } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -13,7 +15,9 @@ import {
 } from "@/components/ui/select";
 import { InboxRow } from "@/components/InboxRow";
 import { InboxDetailDrawer } from "@/components/InboxDetailDrawer";
-import { mockInboxItems } from "@/lib/mockData";
+import { InboxSkeleton } from "@/components/skeletons";
+import { useAuth } from "@/lib/auth";
+import { getInboxItems, updateInboxItemStatus } from "@/lib/api";
 import type { InboxItem, IntakeType, RequestStatus } from "@/lib/types";
 
 const ITEMS_PER_PAGE = 5;
@@ -28,9 +32,8 @@ export function InboxPage({ title, description, defaultType }: InboxPageProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  // TODO: replace with real API call
-  const [items, setItems] = useState<InboxItem[]>(mockInboxItems);
+  const queryClient = useQueryClient();
+  const { restaurant } = useAuth();
 
   const [selectedItem, setSelectedItem] = useState<InboxItem | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -38,6 +41,76 @@ export function InboxPage({ title, description, defaultType }: InboxPageProps) {
   const typeFilter = defaultType ?? (searchParams.get("type") as IntakeType | null);
   const statusFilter = searchParams.get("status") as RequestStatus | null;
   const page = parseInt(searchParams.get("page") ?? "1", 10);
+
+  const queryKey = [
+    "inbox",
+    restaurant?.id,
+    { type: typeFilter, status: statusFilter, page },
+  ];
+
+  const { data, isLoading, error } = useQuery({
+    queryKey,
+    queryFn: () =>
+      getInboxItems(restaurant!.id, {
+        type: typeFilter ?? undefined,
+        status: statusFilter ?? undefined,
+        page,
+        limit: ITEMS_PER_PAGE,
+      }),
+    enabled: !!restaurant?.id,
+  });
+
+  const updateStatusMutation = useMutation({
+    mutationFn: ({
+      itemId,
+      status,
+    }: {
+      itemId: string;
+      status: RequestStatus;
+    }) => updateInboxItemStatus(restaurant!.id, itemId, status),
+    onMutate: async ({ itemId, status }) => {
+      // Cancel any outgoing refetches
+      await queryClient.cancelQueries({ queryKey: ["inbox"] });
+
+      // Snapshot the previous value
+      const previousData = queryClient.getQueryData(queryKey);
+
+      // Optimistically update the cache
+      queryClient.setQueryData(queryKey, (old: typeof data) => {
+        if (!old) return old;
+        return {
+          ...old,
+          items: old.items.map((item) =>
+            item.id === itemId ? { ...item, status } : item
+          ),
+        };
+      });
+
+      // Update selected item if it's the one being updated
+      if (selectedItem?.id === itemId) {
+        setSelectedItem((prev) => (prev ? { ...prev, status } : null));
+      }
+
+      return { previousData };
+    },
+    onError: (err, _, context) => {
+      // Rollback on error
+      if (context?.previousData) {
+        queryClient.setQueryData(queryKey, context.previousData);
+      }
+      toast.error("Failed to update status", {
+        description: err instanceof Error ? err.message : "Please try again",
+      });
+    },
+    onSuccess: () => {
+      toast.success("Status updated");
+    },
+    onSettled: () => {
+      // Invalidate queries to refetch
+      queryClient.invalidateQueries({ queryKey: ["inbox"] });
+      queryClient.invalidateQueries({ queryKey: ["analytics"] });
+    },
+  });
 
   const updateParams = (key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -52,32 +125,32 @@ export function InboxPage({ title, description, defaultType }: InboxPageProps) {
     router.push(`${pathname}?${params.toString()}`);
   };
 
-  const filteredItems = useMemo(() => {
-    return items.filter((item) => {
-      if (typeFilter && item.requestType !== typeFilter) return false;
-      if (statusFilter && item.status !== statusFilter) return false;
-      return true;
-    });
-  }, [items, typeFilter, statusFilter]);
-
-  const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
-  const paginatedItems = filteredItems.slice(
-    (page - 1) * ITEMS_PER_PAGE,
-    page * ITEMS_PER_PAGE
-  );
-
   const handleUpdateStatus = (id: string, status: RequestStatus) => {
-    // TODO: replace with real API call
-    setItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, status } : item))
-    );
-    setSelectedItem((prev) => (prev?.id === id ? { ...prev, status } : prev));
+    updateStatusMutation.mutate({ itemId: id, status });
   };
 
   const openDrawer = (item: InboxItem) => {
     setSelectedItem(item);
     setDrawerOpen(true);
   };
+
+  if (isLoading) {
+    return <InboxSkeleton />;
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center rounded-lg border bg-card py-16">
+        <p className="text-lg font-medium text-foreground">
+          Failed to load inbox
+        </p>
+        <p className="text-sm text-muted-foreground">Please try again later</p>
+      </div>
+    );
+  }
+
+  const items = data?.items ?? [];
+  const totalPages = data?.pages ?? 1;
 
   return (
     <div className="flex flex-col gap-6">
@@ -123,7 +196,7 @@ export function InboxPage({ title, description, defaultType }: InboxPageProps) {
       </div>
 
       {/* Desktop Table */}
-      {paginatedItems.length > 0 ? (
+      {items.length > 0 ? (
         <>
           <div className="hidden overflow-hidden rounded-lg border bg-card md:block">
             <table className="w-full">
@@ -147,7 +220,7 @@ export function InboxPage({ title, description, defaultType }: InboxPageProps) {
                 </tr>
               </thead>
               <tbody>
-                {paginatedItems.map((item) => (
+                {items.map((item) => (
                   <InboxRow
                     key={item.id}
                     item={item}
@@ -160,7 +233,7 @@ export function InboxPage({ title, description, defaultType }: InboxPageProps) {
 
           {/* Mobile Cards */}
           <div className="flex flex-col gap-3 md:hidden">
-            {paginatedItems.map((item) => (
+            {items.map((item) => (
               <InboxRow
                 key={item.id}
                 item={item}

@@ -7,7 +7,7 @@ import type {
 
 export const mockRestaurant: Restaurant = {
   id: "rest_001",
-  name: "The Golden Fork",
+  name: "Your Restaurant",
   phone: "(555) 123-4567",
   address: "123 Main Street, San Francisco, CA 94102",
   timezone: "America/Los_Angeles",
@@ -29,7 +29,7 @@ export const mockRestaurant: Restaurant = {
 
 export const mockUser: User = {
   id: "user_001",
-  email: "owner@goldenfork.com",
+  email: "owner@yourrestaurant.com",
   restaurantId: "rest_001",
 };
 

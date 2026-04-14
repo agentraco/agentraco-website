@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 import {
   Inbox,
   Clock,
@@ -15,18 +16,38 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SummaryCard } from "@/components/SummaryCard";
 import { InboxRow } from "@/components/InboxRow";
-import {
-  mockAnalytics,
-  mockInboxItems,
-  mockRestaurant,
-  mockThisWeekCount,
-} from "@/lib/mockData";
+import { DashboardSkeleton } from "@/components/skeletons";
+import { useAuth } from "@/lib/auth";
+import { getAnalytics, getThisWeekCount, getInboxItems } from "@/lib/api";
 
 export default function DashboardPage() {
-  // TODO: replace with real API call
-  const analytics = mockAnalytics;
-  const recentItems = mockInboxItems.slice(0, 5);
-  const restaurant = mockRestaurant;
+  const { restaurant } = useAuth();
+
+  const { data: analytics, isLoading: analyticsLoading } = useQuery({
+    queryKey: ["analytics", restaurant?.id],
+    queryFn: () => getAnalytics(restaurant!.id),
+    enabled: !!restaurant?.id,
+  });
+
+  const { data: thisWeekData, isLoading: thisWeekLoading } = useQuery({
+    queryKey: ["analytics", "this-week", restaurant?.id],
+    queryFn: () => getThisWeekCount(restaurant!.id),
+    enabled: !!restaurant?.id,
+  });
+
+  const { data: recentData, isLoading: recentLoading } = useQuery({
+    queryKey: ["inbox", restaurant?.id, "recent"],
+    queryFn: () => getInboxItems(restaurant!.id, { limit: 5, page: 1 }),
+    enabled: !!restaurant?.id,
+  });
+
+  const isLoading = analyticsLoading || thisWeekLoading || recentLoading;
+
+  if (isLoading) {
+    return <DashboardSkeleton />;
+  }
+
+  const recentItems = recentData?.items ?? [];
 
   return (
     <div className="flex flex-col gap-6">
@@ -38,7 +59,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Readiness Banner */}
-      {!restaurant.readiness.isReady && (
+      {restaurant && !restaurant.readiness.isReady && (
         <div className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4">
           <AlertCircle className="mt-0.5 h-5 w-5 text-amber-600" />
           <div className="flex-1">
@@ -63,23 +84,23 @@ export default function DashboardPage() {
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <SummaryCard
           title="Total Requests"
-          value={analytics.totalRequests}
+          value={analytics?.totalRequests ?? 0}
           icon={Inbox}
         />
         <SummaryCard
           title="Pending"
-          value={analytics.byStatus.received}
+          value={analytics?.byStatus.received ?? 0}
           icon={Clock}
-          accent={analytics.byStatus.received > 0}
+          accent={(analytics?.byStatus.received ?? 0) > 0}
         />
         <SummaryCard
           title="Confirmed"
-          value={analytics.byStatus.confirmed}
+          value={analytics?.byStatus.confirmed ?? 0}
           icon={CheckCircle2}
         />
         <SummaryCard
           title="This Week"
-          value={mockThisWeekCount}
+          value={thisWeekData?.count ?? 0}
           icon={CalendarDays}
         />
       </div>

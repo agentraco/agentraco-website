@@ -30,16 +30,22 @@ export function InboxDetailDrawer({
 }: InboxDetailDrawerProps) {
   if (!item) return null;
 
+  // Support both snake_case (API) and camelCase (normalized) field names
+  const customerName = item.customerName ?? item.customer_name;
+  const customerPhone = item.customerPhone ?? item.customer_phone;
+  const requestType = item.requestType ?? item.request_type;
+  const createdAt = item.createdAt ?? item.created_at;
+
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent className="w-full sm:max-w-md overflow-y-auto">
         <SheetHeader>
           <div className="flex items-center gap-2">
-            <TypeBadge type={item.requestType} />
+            <TypeBadge type={requestType} />
             <StatusBadge status={item.status} />
           </div>
           <SheetTitle className="text-left text-xl">
-            {item.customerName}
+            {customerName}
           </SheetTitle>
           <SheetDescription className="text-left">
             {item.summary}
@@ -55,15 +61,15 @@ export function InboxDetailDrawer({
             <div className="flex items-center gap-3 text-sm">
               <Phone className="h-4 w-4 text-muted-foreground" />
               <a
-                href={`tel:${item.customerPhone}`}
+                href={`tel:${customerPhone}`}
                 className="text-primary hover:underline"
               >
-                {item.customerPhone}
+                {customerPhone}
               </a>
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <Clock className="h-4 w-4" />
-              <span>{formatRelativeTime(item.createdAt)}</span>
+              <span>{formatRelativeTime(createdAt)}</span>
               <span className="text-xs">via {item.source}</span>
             </div>
           </div>

@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { CheckCircle2, AlertCircle, Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,9 +19,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { mockRestaurant } from "@/lib/mockData";
-import type { Restaurant, HoursJson } from "@/lib/types";
+import { SettingsSkeleton } from "@/components/skeletons";
+import { useAuth } from "@/lib/auth";
+import { getRestaurant, updateRestaurant } from "@/lib/api";
+import type { HoursJson } from "@/lib/types";
 
 const DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
 const DAY_LABELS: Record<(typeof DAYS)[number], string> = {
@@ -62,12 +65,17 @@ const defaultHours: HoursJson = {
 };
 
 export default function SettingsPage() {
-  // TODO: replace with real API call
-  const [restaurant, setRestaurant] = useState<Restaurant>(mockRestaurant);
-  const [hours, setHours] = useState<HoursJson>(
-    restaurant.hoursJson ?? defaultHours
-  );
-  const [isSaving, setIsSaving] = useState(false);
+  const { restaurant: authRestaurant, refetchUser } = useAuth();
+  const queryClient = useQueryClient();
+
+  const { data: restaurant, isLoading } = useQuery({
+    queryKey: ["restaurant", authRestaurant?.id],
+    queryFn: () => getRestaurant(authRestaurant!.id),
+    enabled: !!authRestaurant?.id,
+  });
+
+  const [hours, setHours] = useState<HoursJson>(defaultHours);
+  const [hoursChanged, setHoursChanged] = useState(false);
 
   const {
     register,
@@ -79,13 +87,27 @@ export default function SettingsPage() {
   } = useForm<SettingsFormData>({
     resolver: zodResolver(settingsSchema),
     defaultValues: {
-      name: restaurant.name,
-      phone: restaurant.phone,
-      address: restaurant.address,
-      timezone: restaurant.timezone,
-      transferNumber: restaurant.transferNumber,
+      name: "",
+      phone: null,
+      address: null,
+      timezone: null,
+      transferNumber: null,
     },
   });
+
+  // Reset form when restaurant data loads
+  useEffect(() => {
+    if (restaurant) {
+      reset({
+        name: restaurant.name,
+        phone: restaurant.phone,
+        address: restaurant.address,
+        timezone: restaurant.timezone,
+        transferNumber: restaurant.transferNumber,
+      });
+      setHours(restaurant.hoursJson ?? defaultHours);
+    }
+  }, [restaurant, reset]);
 
   const watchedValues = watch();
 
@@ -103,7 +125,29 @@ export default function SettingsPage() {
     { label: "Transfer Number", complete: !!watchedValues.transferNumber },
   ];
 
-  const [hoursChanged, setHoursChanged] = useState(false);
+  const updateMutation = useMutation({
+    mutationFn: (data: SettingsFormData) =>
+      updateRestaurant(restaurant!.id, {
+        name: data.name,
+        phone: data.phone,
+        address: data.address,
+        timezone: data.timezone,
+        transfer_number: data.transferNumber,
+        hours_json: hours,
+      }),
+    onSuccess: () => {
+      toast.success("Settings saved successfully");
+      reset(watchedValues);
+      setHoursChanged(false);
+      queryClient.invalidateQueries({ queryKey: ["restaurant"] });
+      refetchUser();
+    },
+    onError: (error) => {
+      toast.error("Failed to save settings", {
+        description: error instanceof Error ? error.message : "Please try again",
+      });
+    },
+  });
 
   const updateHour = (
     day: keyof HoursJson,
@@ -120,27 +164,12 @@ export default function SettingsPage() {
   const hasUnsavedChanges = isDirty || hoursChanged;
 
   const onSubmit = async (data: SettingsFormData) => {
-    setIsSaving(true);
-    try {
-      // TODO: replace with real API call
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      
-      const updatedRestaurant: Restaurant = {
-        ...restaurant,
-        ...data,
-        hoursJson: hours,
-        readiness: {
-          isReady: missingFields.length === 0,
-          missingFields,
-        },
-      };
-      setRestaurant(updatedRestaurant);
-      reset(data);
-      setHoursChanged(false);
-    } finally {
-      setIsSaving(false);
-    }
+    updateMutation.mutate(data);
   };
+
+  if (isLoading) {
+    return <SettingsSkeleton />;
+  }
 
   return (
     <div className="flex flex-col gap-6">
@@ -153,10 +182,10 @@ export default function SettingsPage() {
         </div>
         <Button
           onClick={handleSubmit(onSubmit)}
-          disabled={!hasUnsavedChanges || isSaving}
+          disabled={!hasUnsavedChanges || updateMutation.isPending}
         >
           <Save className="mr-2 h-4 w-4" />
-          {isSaving ? "Saving..." : "Save changes"}
+          {updateMutation.isPending ? "Saving..." : "Save changes"}
         </Button>
       </div>
 
@@ -334,15 +363,26 @@ export default function SettingsPage() {
               <Button
                 variant="outline"
                 onClick={() => {
-                  reset();
-                  setHours(restaurant.hoursJson ?? defaultHours);
-                  setHoursChanged(false);
+                  if (restaurant) {
+                    reset({
+                      name: restaurant.name,
+                      phone: restaurant.phone,
+                      address: restaurant.address,
+                      timezone: restaurant.timezone,
+                      transferNumber: restaurant.transferNumber,
+                    });
+                    setHours(restaurant.hoursJson ?? defaultHours);
+                    setHoursChanged(false);
+                  }
                 }}
               >
                 Discard
               </Button>
-              <Button onClick={handleSubmit(onSubmit)} disabled={isSaving}>
-                {isSaving ? "Saving..." : "Save changes"}
+              <Button
+                onClick={handleSubmit(onSubmit)}
+                disabled={updateMutation.isPending}
+              >
+                {updateMutation.isPending ? "Saving..." : "Save changes"}
               </Button>
             </div>
           </div>

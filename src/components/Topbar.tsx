@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useAuth } from "@/lib/useAuth";
+import { useAuth } from "@/lib/auth";
 
 interface TopbarProps {
   onMenuClick: () => void;
