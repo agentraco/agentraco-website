@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 360" width="700" height="360" role="img">
+  <title>AgentraCo Logo — AI services and solutions</title>
+  <desc>AgentraCo brand logo on white background. The Pulse A mark with wordmark, tagline and hero line.</desc>
+
+  
+  <rect width="700" height="360" fill="#FFFFFF"></rect>
+
+  
+
+  
+  <path d="M66 237 L128 88" stroke="#06091E" stroke-width="15" stroke-linecap="round" fill="none"></path>
+
+  
+  <path d="M128 88 L189 237" stroke="#0062FF" stroke-width="15" stroke-linecap="round" fill="none"></path>
+
+  
+  <path d="M164 175 L145 175 L136 198 L119 147 L111 175 L91 175" stroke="#FF5722" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+
+  
+  <text font-family="&#39;Playfair Display&#39;, Georgia, &#39;Times New Roman&#39;, serif" font-size="62" font-weight="400" letter-spacing="-1">
+    <tspan x="215" y="186" fill="#06091E">Agentra</tspan><tspan fill="#0062FF">Co</tspan>
+  </text>
+
+  
+  <text x="217" y="218" font-family="&#39;DM Sans&#39;, Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#8892B0" letter-spacing="1.8">AI services &amp; solutions</text>
+
+  
+  <line x1="55" y1="260" x2="645" y2="260" stroke="#EAECF5" stroke-width="0.75"></line>
+
+  
+
+  
+  <text x="350" y="301" font-family="&#39;DM Sans&#39;, Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#06091E" text-anchor="middle" letter-spacing="0.2">AI That Thinks. Agents That Work. Results That Scale.</text>
+
+  
+  <text x="350" y="334" font-family="&#39;DM Sans&#39;, Arial, Helvetica, sans-serif" font-size="13" font-weight="500" fill="#FF5722" text-anchor="middle" letter-spacing="1">Don&#39;t Just Adapt. Dominate With AI.</text>
+
+  
+  <g transform="translate(55, 352)">
+    <rect width="12" height="6" rx="2" fill="#06091E"></rect>
+    <rect x="17" width="12" height="6" rx="2" fill="#0062FF"></rect>
+    <rect x="34" width="12" height="6" rx="2" fill="#00E87A"></rect>
+    <rect x="51" width="12" height="6" rx="2" fill="#FF5722"></rect>
+    <text x="70" y="5.5" font-family="Arial, sans-serif" font-size="8" fill="#8892B0">Brand colors for reference</text>
+  </g>
+
+</svg>

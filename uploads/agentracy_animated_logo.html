@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentraCo — Animated Logo (Web Asset)</title>
+<!--
+  ═══════════════════════════════════════════════════════════
+  AgentraCo — Animated Logo  |  Website / Hero Section Asset
+  ═══════════════════════════════════════════════════════════
+
+  HOW TO USE
+  Drop .logo-hero into any dark section. The logo and ECG
+  animation work out of the box. Remove .dev-panel before
+  going live.
+
+  ANIMATION BREAKDOWN
+  1. On load: left leg draws in (0.3s delay, 0.9s ease-out)
+  2. On load: right leg draws in (0.7s delay, 0.9s ease-out)
+  3. After 1.5s: ECG pulse begins looping (1.8s per cycle)
+     — The pulse travels left → right across the crossbar
+     — 3 depth-shadow layers create the 3D extrusion look
+     — Orange glow filter adds luminance / energy
+  4. Hover: logo flattens from 3D tilt → straight (0.7s ease)
+
+  BRAND COLORS
+  Deep Space     #06091E  — Primary dark
+  Velocity Blue  #0062FF  — AI / right leg
+  Apex Green     #00E87A  — Growth / dark accent
+  Kinetic Orange #FF5722  — ECG pulse / CTAs
+
+  FONTS
+  Wordmark: Playfair Display (loaded from Google Fonts)
+  UI / Body: DM Sans (loaded from Google Fonts)
+  ═══════════════════════════════════════════════════════════
+-->
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ─── Reset ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ─── Page ─── */
+body {
+  background: #06091E;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+  padding: 60px 24px;
+  gap: 56px;
+}
+
+/* ══════════════════════════════
+   LOGO ROW
+   ══════════════════════════════ */
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  /* 3D tilt — straightens on hover */
+  transform: perspective(1000px) rotateX(6deg) rotateY(-1deg);
+  transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: default;
+  user-select: none;
+}
+.logo-row:hover {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02);
+}
+
+/* ══════════════════════════════
+   SVG MARK — The Pulse A
+   ══════════════════════════════ */
+.mark { display: block; overflow: visible; }
+
+/* ── Legs: draw in on load ── */
+.left-leg, .right-leg {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 5.5;
+  stroke-dasharray: 62;    /* slightly > path length (~57.5) */
+  stroke-dashoffset: 62;   /* fully hidden on start */
+}
+.left-leg  { stroke: #FFFFFF; animation: draw-leg 0.9s ease-out 0.3s forwards; }
+.right-leg { stroke: #00E87A; animation: draw-leg 0.9s ease-out 0.7s forwards; }
+
+@keyframes draw-leg {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── ECG crossbar: all layers share the traveling dash ──
+   Path: M13 34 L20 34 L23 24 L29 42 L32 34 L39 34 (left→right)
+   Path length ≈ 52 units
+   dasharray: 20 visible dash + 52 gap = 72 total pattern
+   dashoffset animates -20 → 52 (pulse enters left, exits right)
+── */
+.ecg-s3, .ecg-s2, .ecg-s1, .ecg-pulse {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 20 52;
+  stroke-dashoffset: -20;   /* hidden before path start */
+}
+
+/* Shadow layer 3 — deepest (furthest back) */
+.ecg-s3 {
+  stroke: #2A0500;
+  stroke-width: 2;
+  opacity: 0.5;
+  animation: ecg-travel 1.8s linear 1.95s infinite;
+}
+/* Shadow layer 2 */
+.ecg-s2 {
+  stroke: #6B1200;
+  stroke-width: 2.5;
+  opacity: 0.55;
+  animation: ecg-travel 1.8s linear 1.8s infinite;
+}
+/* Shadow layer 1 — closest shadow */
+.ecg-s1 {
+  stroke: #C13010;
+  stroke-width: 3;
+  opacity: 0.7;
+  animation: ecg-travel 1.8s linear 1.65s infinite;
+}
+/* Main pulse — bright orange with glow */
+.ecg-pulse {
+  stroke: #FF5722;
+  stroke-width: 3.5;
+  animation: ecg-travel 1.8s linear 1.5s infinite;
+  /* Glow effect: soft orange halo */
+  filter: drop-shadow(0 0 3px rgba(255, 87, 34, 1))
+          drop-shadow(0 0 8px rgba(255, 87, 34, 0.6))
+          drop-shadow(0 0 16px rgba(255, 87, 34, 0.2));
+}
+
+/* Pulse travels from dashoffset -20 (before left edge)
+   to +52 (past right edge) — left to right motion */
+@keyframes ecg-travel {
+  from { stroke-dashoffset: -20; }
+  to   { stroke-dashoffset:  52; }
+}
+
+/* ══════════════════════════════
+   WORDMARK
+   ══════════════════════════════ */
+.wordmark-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.wordmark {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 58px;
+  font-weight: 400;
+  color: #FFFFFF;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  /* Subtle shimmer on hover via parent */
+  transition: color 0.3s ease;
+}
+.wordmark .co { color: #00E87A; }
+.subtitle {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.32);
+  letter-spacing: 2px;
+  padding-left: 2px;
+}
+
+/* ══════════════════════════════
+   TAGLINE SECTION
+   ══════════════════════════════ */
+.taglines {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 44px;
+  max-width: 680px;
+  opacity: 0;
+  animation: fade-up 0.8s ease-out 1.6s forwards;
+}
+.primary-tag {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.55;
+  margin-bottom: 16px;
+  letter-spacing: 0.1px;
+}
+/* Highlight the triple rhythm visually */
+.primary-tag em {
+  font-style: normal;
+  color: #00E87A;
+}
+.hero-line {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #FF5722;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ══════════════════════════════
+   OPTIONAL: Subtle grid bg for hero pages
+   Uncomment the section below in production
+   ══════════════════════════════
+.logo-hero {
+  background:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+*/
+
+/* ══════════════════════════════
+   DEV NOTES PANEL — REMOVE BEFORE PRODUCTION
+   ══════════════════════════════ */
+.dev-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.9;
+  max-width: 310px;
+  backdrop-filter: blur(10px);
+}
+.dev-panel b {
+  color: rgba(255,255,255,0.7);
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+.dev-panel .warn {
+  color: rgba(255, 87, 34, 0.75);
+  margin-top: 6px;
+  display: block;
+}
+</style>
+</head>
+
+<body class="logo-hero">
+
+  <!-- ══ LOGO ══ -->
+  <div class="logo-row">
+
+    <!--
+      SVG MARK — viewBox 52×58 units
+      Original path geometry, displayed at 155×174px (2.67× render)
+
+      Z-ORDER (bottom to top):
+        ecg-s3  (darkest shadow, furthest back)
+        ecg-s2
+        ecg-s1
+        left-leg   (draws in on load)
+        right-leg  (draws in on load)
+        ecg-pulse  (animated bright orange — topmost)
+
+      ECG PATH DIRECTION: left → right (x=13 to x=39)
+      Animation: dashoffset -20 → 52 (entering left, exiting right)
+    -->
+    <svg class="mark"
+         viewBox="0 0 52 58"
+         width="155" height="168"
+         xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         overflow="visible"
+         aria-hidden="true">
+
+      <!-- ── 3D Depth: ECG shadow layers (below main) ── -->
+      <!-- Each shadow is offset down by 0.5-1.5 SVG units (≈1-4px at render size) -->
+      <path class="ecg-s3"
+            d="M13 34 L20 34 L23 24 L29 42 L32 34 L39 34"
+            transform="translate(0, 1.5)"/>
+      <path class="ecg-s2"
+            d="M13 34 L20 34 L23 24 L29 42 L32 34 L39 34"
+            transform="translate(0, 1)"/>
+      <path class="ecg-s1"
+            d="M13 34 L20 34 L23 24 L29 42 L32 34 L39 34"
+            transform="translate(0, 0.5)"/>
+
+      <!-- ── Legs: draw in on page load ── -->
+      <path class="left-leg"  d="M4 56 L26 3"/>   <!-- Deep Space / White -->
+      <path class="right-leg" d="M26 3 L48 56"/>  <!-- Apex Green -->
+
+      <!-- ── ECG Pulse: animated bright orange (topmost layer) ── -->
+      <path class="ecg-pulse"
+            d="M13 34 L20 34 L23 24 L29 42 L32 34 L39 34"/>
+    </svg>
+
+    <!-- Wordmark & subtitle -->
+    <div class="wordmark-block">
+      <div class="wordmark">Agentra<span class="co">Co</span></div>
+      <div class="subtitle">AI services &amp; solutions</div>
+    </div>
+
+  </div><!-- /logo-row -->
+
+  <!-- ══ TAGLINES ══ -->
+  <div class="taglines">
+    <p class="primary-tag">
+      <em>AI That Thinks.</em>&nbsp; Agents That Work.&nbsp; Results That Scale.
+    </p>
+    <p class="hero-line">Don't Just Adapt. Dominate With AI.</p>
+  </div>
+
+  <!-- ══ DEV NOTES — Remove before production ══ -->
+  <div class="dev-panel">
+    <b>AgentraCo — Dev Notes</b>
+    Colors: #06091E · #0062FF · #00E87A · #FF5722<br>
+    Fonts: Playfair Display (wordmark) · DM Sans (UI)<br>
+    Legs draw in: 0.9s ease-out · stagger 0.3s / 0.7s<br>
+    ECG loop: 1.8s linear · starts at 1.5s delay<br>
+    ECG pulse: dashoffset –20 → 52 (left → right)<br>
+    3D tilt: perspective(1000px) rotateX(6deg)<br>
+    Hover: flattens + scale 1.02 in 0.7s<br>
+    Taglines fade up: 0.8s at 1.6s delay
+    <span class="warn">→ Delete .dev-panel before production</span>
+  </div>
+
+</body>
+</html>
