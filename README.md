@@ -38,9 +38,25 @@ These are still controlled by `data-*` attributes on `<body>` in `index.html`, s
 
 ## Deploy to GitHub Pages
 
+This project is a static HTML/CSS/JS site. It is not a Next.js app, so no
+`package.json`, install step, or build step is required.
+
+Recommended setup:
+
+1. Push to the repo's default branch.
+2. In **Settings → Pages**, set source to `GitHub Actions`.
+3. The included `.github/workflows/pages.yml` workflow will publish the static files.
+4. The site will be live at `https://<owner>.github.io/<repo>/`.
+
+Alternative setup:
+
 1. Push to the repo's default branch.
 2. In **Settings → Pages**, set source to `Branch: main / root`.
-3. Wait ~1 minute. The site will be live at `https://<owner>.github.io/<repo>/`.
+3. Wait ~1 minute.
+
+If you see `No Next.js version detected`, the deploy service is using a Next.js
+framework preset. Change the framework/build preset to static HTML, `Other`, or
+GitHub Pages static hosting. Do not add `next` just to satisfy that detector.
 
 The `.nojekyll` file prevents Jekyll from skipping any underscore-prefixed paths.
 
