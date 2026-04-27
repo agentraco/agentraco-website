@@ -54,10 +54,6 @@ Alternative setup:
 2. In **Settings → Pages**, set source to `Branch: main / root`.
 3. Wait ~1 minute.
 
-If you see `No Next.js version detected`, the deploy service is using a Next.js
-framework preset. Change the framework/build preset to static HTML, `Other`, or
-GitHub Pages static hosting. Do not add `next` just to satisfy that detector.
-
 The `.nojekyll` file prevents Jekyll from skipping any underscore-prefixed paths.
 
 ## Manual QA before going live
