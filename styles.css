@@ -637,6 +637,7 @@ body[data-accent="kinetic"]  { --accent: var(--kinetic-orange); --accent-soft: r
   transition: color 0.18s ease;
 }
 .footer-col a:hover { color: var(--ink); }
+.footer-note { font-size: 12px; color: var(--muted); margin-top: 14px; line-height: 1.5; }
 .footer-bottom {
   max-width: var(--container); margin: 0 auto;
   padding-top: 24px;
