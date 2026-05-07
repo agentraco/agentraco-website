@@ -638,6 +638,33 @@ body[data-accent="kinetic"]  { --accent: var(--kinetic-orange); --accent-soft: r
 }
 .footer-col a:hover { color: var(--ink); }
 .footer-note { font-size: 12px; color: var(--muted); margin-top: 14px; line-height: 1.5; }
+
+/* ── Start Pilot section ─────────────────────────────── */
+.start-pilot-section { background: var(--bg-soft); }
+.start-pilot-card {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  background: #fff;
+  padding: clamp(28px, 5vw, 56px);
+  box-shadow: var(--shadow-md);
+}
+.pilot-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 32px 0;
+}
+.pilot-detail {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  background: var(--bg-soft);
+}
+.pilot-detail h4 { margin: 0 0 8px; font-size: 16px; color: var(--ink); }
+.pilot-detail p  { margin: 0; color: var(--muted); line-height: 1.6; font-size: 14px; }
+@media (max-width: 800px) {
+  .pilot-details-grid { grid-template-columns: 1fr; }
+}
 .footer-bottom {
   max-width: var(--container); margin: 0 auto;
   padding-top: 24px;
