@@ -104,7 +104,7 @@
             <div class="visual-frame-v5">
               <!-- Video Background -->
               <video autoplay muted loop playsinline class="video-bg-v5">
-                <source src="short.mp4" type="video/mp4">
+                <source src="now.mp4" type="video/mp4">
               </video>
 
               <!-- Cinematic Glass Layer -->
@@ -221,143 +221,271 @@
         </div>
       </div>
 
-      <div class="industries-rail-container" data-reveal="up">
-        <div class="industries-rail" id="industriesRail">
-          <div class="industries-track" id="industriesTrack">
-            <!-- Card 1 -->
-            <article class="industry-card active">
-              <div class="industry-card-visual"><img src="restaurant.jpeg" alt="" loading="lazy"></div>
-              <div class="type-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8c0-2 2-3 8-3s8 1 8 3v1H4V8zm0 3h16v9c0 1-1 2-2 2H6c-1 0-2-1-2-2v-9zm5 3v3m6-3v3"/></svg></div>
-              <div class="industry-card-content">
-                <h4>Restaurants</h4>
-                <p>Reservations, waitlist, hours, catering & allergy notes.</p>
+      <div class="industries-showcase-container" data-reveal="up">
+        <div class="industries-showcase" id="industriesShowcase">
+          
+          <!-- Flanking Navigation Buttons -->
+          <button class="showcase-nav-btn prev" id="showcasePrevBtn" aria-label="Previous Industry">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+
+          <div class="showcase-slides">
+            
+            <!-- Slide 1: Education (Preloaded) -->
+            <div class="showcase-slide active" data-index="0">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="education.jpeg" alt="Education">
+                </div>
               </div>
-            </article>
-            <!-- Card 2 -->
-            <article class="industry-card">
-              <div class="industry-card-visual"><img src="spa.jpeg" alt="" loading="lazy"></div>
-              <div class="type-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v8m-3-2c0 4 6 4 6 0M5 13c2 5 5 8 7 8s5-3 7-8"/></svg></div>
-              <div class="industry-card-content">
-                <h4>Salons & Spas</h4>
-                <p>Appointments, service menus, and rebooking.</p>
+              <div class="showcase-content">
+                <span class="showcase-tag">01 / ADMISSIONS & ACADEMICS</span>
+                <h3 class="showcase-name">Education</h3>
+                <p class="showcase-desc">Automates student enrollment inquiries, answers complex campus questions, routes tour requests, and supports current student needs 24/7.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Instantly schedule campus & department tours</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Sync with student information systems (SIS)</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Manage custom admission FAQs & enrollment inquiries</span>
+                  </li>
+                </ul>
               </div>
-            </article>
-            <!-- Card 3 -->
-            <article class="industry-card">
-              <div class="industry-card-visual"><img src="clinics.jpeg" alt="" loading="lazy"></div>
-              <div class="type-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-              <div class="industry-card-content">
-                <h4>Clinics</h4>
-                <p>Patient intake, scheduling, and medical FAQs.</p>
+            </div>
+
+            <!-- Slide 2: Restaurants -->
+            <div class="showcase-slide" data-index="1">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="restaurant.jpeg" alt="Restaurants" loading="lazy">
+                </div>
               </div>
-            </article>
-            <!-- Card 4 -->
-            <article class="industry-card">
-              <div class="industry-card-visual"><img src="realestate.jpeg" alt="" loading="lazy"></div>
-              <div class="type-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1v-9z"/></svg></div>
-              <div class="industry-card-content">
-                <h4>Real Estate</h4>
-                <p>Listing inquiries, tour scheduling, and lead qualification.</p>
+              <div class="showcase-content">
+                <span class="showcase-tag">02 / DISPATCH & BOOKING</span>
+                <h3 class="showcase-name">Restaurants</h3>
+                <p class="showcase-desc">Picks up 24/7 with custom training. Books tables, updates reservations, and handles waitlists natively in your POS.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Natively synced with OpenTable & Resy</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>FAQ Answers (Menus, parking, dietary notes)</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Custom catering & group event inquiries</span>
+                  </li>
+                </ul>
               </div>
-            </article>
-            <!-- Card 5 -->
-            <article class="industry-card">
-              <div class="industry-card-visual"><img src="law.jpeg" alt="" loading="lazy"></div>
-              <div class="type-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2 12h3v8h14v-8h3L12 3z"/></svg></div>
-              <div class="industry-card-content">
-                <h4>Law Firms</h4>
-                <p>Intake, case inquiries, and direct legal escalations.</p>
+            </div>
+
+            <!-- Slide 3: Spa & Salon -->
+            <div class="showcase-slide" data-index="2">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="spa.jpeg" alt="Spa & Salon" loading="lazy">
+                </div>
               </div>
-            </article>
-            <!-- Card 6 -->
-            <article class="industry-card">
-              <div class="industry-card-visual"><img src="education.jpeg" alt="" loading="lazy"></div>
-              <div class="type-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.825-3a12.083 12.083 0 01.665-6.479L12 14z"/><path d="M12 14l9-5-9-5-9 5 9 5zm0 0l9-5-9-5-9 5 9 5z"/></svg></div>
-              <div class="industry-card-content">
-                <h4>Education</h4>
-                <p>Enrollment inquiries, campus tours, and student support.</p>
+              <div class="showcase-content">
+                <span class="showcase-tag">03 / CALENDAR OPTIMIZATION</span>
+                <h3 class="showcase-name">Spa & Salon</h3>
+                <p class="showcase-desc">Provides immediate appointment scheduling, handles stylist preferences, and sends rebooking links via SMS to maximize occupancy.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Smooth Mindbody & Boulevard sync</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>SMS reminders & cancellation fills</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Service packages & menu details</span>
+                  </li>
+                </ul>
               </div>
-            </article>
+            </div>
+
+            <!-- Slide 4: Law Firms -->
+            <div class="showcase-slide" data-index="3">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="law.jpeg" alt="Law Firms" loading="lazy">
+                </div>
+              </div>
+              <div class="showcase-content">
+                <span class="showcase-tag">04 / LEGAL INTAKE & TRIAGE</span>
+                <h3 class="showcase-name">Law Firms</h3>
+                <p class="showcase-desc">Captures new case details instantly, schedules introductory client consultations, and handles emergency legal escalations with precision.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Fast lead capture & intake workflows</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Calendar sync for initial consultations</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Direct routing for active client emergencies</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Slide 5: Clinics -->
+            <div class="showcase-slide" data-index="4">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="clinics.jpeg" alt="Clinics" loading="lazy">
+                </div>
+              </div>
+              <div class="showcase-content">
+                <span class="showcase-tag">05 / CLINICAL INTAKE</span>
+                <h3 class="showcase-name">Clinics</h3>
+                <p class="showcase-desc">Secure patient intake, medical scheduling, insurance collection, and answers to common FAQs on-demand.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>HIPAA-compliant handoff workflows</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Intake link delivery via secure text</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Refill requests & urgent routing</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Slide 6: Real Estate -->
+            <div class="showcase-slide" data-index="5">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="realestate.jpeg" alt="Real Estate" loading="lazy">
+                </div>
+              </div>
+              <div class="showcase-content">
+                <span class="showcase-tag">06 / LEAD QUALIFICATION</span>
+                <h3 class="showcase-name">Real Estate</h3>
+                <p class="showcase-desc">Qualifies warm buyer and tenant leads instantly, records custom preferences, and integrates directly with calendar tools to book property tours.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Instant property tour scheduling</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>CRM sync (HubSpot, Salesforce, KVCore)</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Lead scoring & profile logging</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
           </div>
+
+          <button class="showcase-nav-btn next" id="showcaseNextBtn" aria-label="Next Industry">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
-    <!-- ════════════ OUR SERVICES (v8 Editorial Luxury) ════════════ -->
-    <section class="section services-v8" id="services">
+
+        <!-- Pagination Dots -->
+        <div class="showcase-pagination" id="showcasePagination">
+          <button class="showcase-dot active" data-index="0" aria-label="Go to slide 1"></button>
+          <button class="showcase-dot" data-index="1" aria-label="Go to slide 2"></button>
+          <button class="showcase-dot" data-index="2" aria-label="Go to slide 3"></button>
+          <button class="showcase-dot" data-index="3" aria-label="Go to slide 4"></button>
+          <button class="showcase-dot" data-index="4" aria-label="Go to slide 5"></button>
+          <button class="showcase-dot" data-index="5" aria-label="Go to slide 6"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ OUR SERVICES — Circular Wheel ════════════ -->
+    <section class="section services-wheel" id="services">
+      <div class="sw-ambient" aria-hidden="true"></div>
       <div class="container">
-        <!-- Top Header -->
-        <div class="v8-header" data-reveal="up">
-          <span class="v8-label">SERVICES</span>
-          <h2 class="v8-title">Front-desk,<br>follow-through,<br>and <span class="orange-italic">every step in between.</span></h2>
-          <p class="v8-desc">Start with the AI receptionist. Layer on review management, lead capture, and follow-up automation as your business is ready.</p>
+        <header class="sw-header" data-reveal="up">
+          <span class="sw-eyebrow">SERVICES</span>
+          <h2 class="sw-title">Front-desk,<br>follow-through,<br>and <span class="sw-title-accent">every step in between.</span></h2>
+          <p class="sw-subtitle">Start with the AI receptionist. Layer on review management, lead capture, and follow-up automation as your business is ready.</p>
+        </header>
+
+        <div class="sw-wheel-assembly" data-reveal="up" id="serviceWheel">
+          <button type="button" class="sw-arrow sw-arrow--prev" aria-label="Previous service">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <div class="sw-stage">
+            <div class="sw-center-glow" aria-hidden="true"></div>
+            <svg class="sw-rings" viewBox="0 0 600 600" aria-hidden="true">
+              <circle class="sw-ring sw-ring--outer" cx="300" cy="300" r="268"/>
+              <circle class="sw-ring sw-ring--inner" cx="300" cy="300" r="218"/>
+              <circle class="sw-node sw-node--orange" cx="300" cy="32" r="4"/>
+              <circle class="sw-node sw-node--green" cx="489" cy="111" r="3.5"/>
+              <circle class="sw-node sw-node--orange" cx="568" cy="300" r="4"/>
+              <circle class="sw-node sw-node--green" cx="489" cy="489" r="3.5"/>
+              <circle class="sw-node sw-node--orange" cx="300" cy="568" r="4"/>
+              <circle class="sw-node sw-node--green" cx="111" cy="489" r="3.5"/>
+              <circle class="sw-node sw-node--orange" cx="32" cy="300" r="4"/>
+              <circle class="sw-node sw-node--green" cx="111" cy="111" r="3.5"/>
+            </svg>
+            <div class="sw-orbit-track" id="swOrbitTrack"></div>
+            <article class="sw-center-card" id="swCenterCard" aria-live="polite"></article>
+          </div>
+          <button type="button" class="sw-arrow sw-arrow--next" aria-label="Next service">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
         </div>
 
-        <!-- Balanced Grid (4+5) -->
-        <div class="v8-cards-container">
-          <!-- Row 1: 4 Cards -->
-          <div class="v8-row v8-row-4">
-            <!-- 01 -->
-            <div class="v8-card" data-reveal="up">
-              <span class="v8-card-meta">01 — Core</span>
-              <h4>24/7 AI Phone Receptionist</h4>
-              <p>Answers every call with your brand voice — day, night, weekends, holidays.</p>
-            </div>
-            <!-- 02 -->
-            <div class="v8-card" data-reveal="up" style="transition-delay: 50ms;">
-              <span class="v8-card-meta">02 — Core</span>
-              <h4>FAQ Handling</h4>
-              <p>Hours, location, parking, menu, pricing — answered instantly with your facts.</p>
-            </div>
-            <!-- 03 -->
-            <div class="v8-card" data-reveal="up" style="transition-delay: 100ms;">
-              <span class="v8-card-meta">03 — Core</span>
-              <h4>Reservations & Appointments</h4>
-              <p>Books, reschedules, and cancels through your existing systems.</p>
-            </div>
-            <!-- 04 -->
-            <div class="v8-card" data-reveal="up" style="transition-delay: 150ms;">
-              <span class="v8-card-meta">04 — Core</span>
-              <h4>Request Capture</h4>
-              <p>Callbacks, catering quotes, and service inquiries logged in structured form.</p>
-            </div>
-          </div>
+        <nav class="sw-dots" id="swDots" aria-label="Service navigation"></nav>
 
-          <!-- Row 2: 5 Cards -->
-          <div class="v8-row v8-row-5">
-            <!-- 05 -->
-            <div class="v8-card" data-reveal="up">
-              <span class="v8-card-meta">05 — Core</span>
-              <h4>SMS Confirmations</h4>
-              <p>Two-way SMS for confirmations, reminders, and clarifications.</p>
+        <div class="sw-highlights" data-reveal="up">
+          <div class="sw-highlight">
+            <div class="sw-highlight-icon sw-highlight-icon--orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
             </div>
-            <!-- 06 -->
-            <div class="v8-card" data-reveal="up" style="transition-delay: 50ms;">
-              <span class="v8-card-meta">06 — Core</span>
-              <h4>Staff Routing</h4>
-              <p>Important calls and edge cases reach the right person — never get dropped.</p>
+            <h4>Always On</h4>
+            <p>24/7 coverage so every call gets answered — day, night, weekends, holidays.</p>
+          </div>
+          <div class="sw-highlight">
+            <div class="sw-highlight-icon sw-highlight-icon--green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
             </div>
-            <!-- 07 -->
-            <div class="v8-card" data-reveal="up" style="transition-delay: 100ms;">
-              <span class="v8-card-meta">07 — Core</span>
-              <h4>Call Summaries & Analytics</h4>
-              <p>Every call summarized; trends surfaced so you can act on them.</p>
+            <h4>Smarter Every Day</h4>
+            <p>Every call summarized; trends surfaced so you can act on them.</p>
+          </div>
+          <div class="sw-highlight">
+            <div class="sw-highlight-icon sw-highlight-icon--orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg>
             </div>
-            <!-- 08 -->
-            <div class="v8-card" data-reveal="up" style="transition-delay: 150ms;">
-              <span class="v8-card-meta">08 — Add-on</span>
-              <h4>Review Management</h4>
-              <p>Request, monitor, and respond to reviews where your customers actually look.</p>
+            <h4>Human When It Matters</h4>
+            <p>Important calls and edge cases reach the right person — never get dropped.</p>
+          </div>
+          <div class="sw-highlight">
+            <div class="sw-highlight-icon sw-highlight-icon--green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
-            <!-- 09 -->
-            <div class="v8-card" data-reveal="up" style="transition-delay: 200ms;">
-              <span class="v8-card-meta">09 — Add-on</span>
-              <h4>Lead Capture & Follow-up</h4>
-              <p>Web forms, callback flows, and nurture sequences in one place.</p>
-            </div>
+            <h4>Grows With You</h4>
+            <p>Layer on review management, lead capture, and follow-up as your business is ready.</p>
           </div>
         </div>
-      </div>
-    </section>
-      </div>
-    </section>
       </div>
     </section>
 
@@ -409,17 +537,7 @@
               <!-- Use the generated illustration -->
               <img src="assets/trust-timeline-visual.png" class="trust-main-img" alt="AI Security Visual">
               
-              <div class="trust-icons-orbit">
-                <div class="orbit-icon icon-1">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                </div>
-                <div class="orbit-icon icon-2">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                </div>
-                <div class="orbit-icon icon-3">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                </div>
-              </div>
+
             </div>
           </div>
 
@@ -553,15 +671,27 @@
     </div>
   </section>
 
+  <!-- ════════════ FOOTER WAVE DIVIDER ════════════ -->
+  <div class="footer-wave-wrapper" aria-hidden="true">
+    <svg class="footer-wave-svg" viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Soft Shadow Layer 1 (blur depth) -->
+      <path d="M0,34 C240,74 480,14 720,44 C960,74 1200,24 1440,49 L1440,80 L0,80 Z" fill="rgba(0, 0, 0, 0.06)" opacity="0.8"></path>
+      <!-- Soft Shadow Layer 2 (fine depth) -->
+      <path d="M0,32 C240,72 480,12 720,42 C960,72 1200,22 1440,47 L1440,80 L0,80 Z" fill="rgba(0, 0, 0, 0.04)" opacity="0.9"></path>
+      <!-- Main Wave Layer -->
+      <path d="M0,30 C240,70 480,10 720,40 C960,70 1200,20 1440,45 L1440,80 L0,80 Z" fill="#d6d1ca"></path>
+    </svg>
+  </div>
+
   <!-- ════════════ FOOTER (v6 Premium Dark) ════════════ -->
   <footer class="footer footer-v6">
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="brand">
           <svg class="brand-mark" viewBox="0 0 52 58" fill="none" aria-hidden="true">
-            <path d="M4 56 L26 3" stroke="#fff" stroke-width="6" stroke-linecap="round" />
-            <path d="M26 3 L48 56" stroke="#00ff88" stroke-width="6" stroke-linecap="round" />
-            <path d="M13 34 L20 34 L23 24 L29 42 L32 34 L39 34" stroke="#ff6a00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+            <path d="M4 56 L26 3" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round" />
+            <path d="M26 3 L48 56" stroke="#00E87A" stroke-width="6" stroke-linecap="round" />
+            <path d="M13 34 L20 34 L23 24 L29 42 L32 34 L39 34" stroke="#FF5722" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
           </svg>
           <span class="brand-name">Agentra<span class="co">Co</span></span>
         </div>
@@ -635,13 +765,13 @@
       </div>
 
       <div class="modal-body">
-        <a href="tel:9652933925" class="contact-row">
+        <a href="tel:+919652933925" class="contact-row">
           <div class="contact-icon-box">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
           </div>
           <div class="contact-info">
             <span class="label">Phone</span>
-            <span class="value">965-293-3925</span>
+            <span class="value">+91 965-293-3925</span>
           </div>
         </a>
 
@@ -661,7 +791,7 @@
           </div>
           <div class="contact-info">
             <span class="label">Location</span>
-            <span class="value">USA</span>
+            <span class="value">India</span>
           </div>
         </div>
       </div>
