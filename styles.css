@@ -1012,7 +1012,7 @@ body[data-density="compact"] {
 
 .p-card-v5:hover,
 .p-card-v5.active {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-12px) scale(1.06);
   border-color: rgba(255, 106, 0, 0.3);
   background: linear-gradient(145deg, rgba(255, 106, 0, 0.3) 0%, #201a18 35%, #0f0f0f 100%);
   box-shadow:
@@ -1484,12 +1484,24 @@ body[data-density="compact"] {
 }
 
 .showcase-name {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   font-family: var(--serif);
   font-size: 42px;
   color: var(--ink);
   margin-bottom: 20px;
   font-weight: 400;
   letter-spacing: -0.5px;
+}
+
+.showcase-name svg {
+  color: #ff5a1f;
+  width: 32px;
+  height: 32px;
+  stroke-width: 1.75;
+  flex-shrink: 0;
+  display: block;
 }
 
 .showcase-desc {
@@ -1591,6 +1603,10 @@ body[data-density="compact"] {
   
   .showcase-content {
     align-items: center;
+  }
+
+  .showcase-name {
+    justify-content: center;
   }
   
   .showcase-visual-wrapper {

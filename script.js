@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ════════════ INDUSTRIES SHOWCASE CAROUSEL ════════════ */
   const showcase = document.getElementById('industriesShowcase');
   const slides = document.querySelectorAll('.showcase-slide');
+  const visualWrappers = document.querySelectorAll('.showcase-visual-wrapper');
   const dots = document.querySelectorAll('.showcase-dot');
   const prevBtn = document.getElementById('showcasePrevBtn');
   const nextBtn = document.getElementById('showcaseNextBtn');
@@ -73,7 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
     currentSlideIndex = targetIndex;
   }
   
-  // Timer Actions
+  // Timer Actions and Hover Logic
+  let hoverTimeout = null;
+  let isHovered = false;
+
   function startAutoplay() {
     stopAutoplay();
     autoplayTimer = setInterval(() => {
@@ -87,15 +91,52 @@ document.addEventListener('DOMContentLoaded', () => {
       autoplayTimer = null;
     }
   }
+
+  function handleHoverStart() {
+    isHovered = true;
+    stopAutoplay();
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    
+    // Pause auto-slide for 15 seconds. If still hovered, move to next slide.
+    hoverTimeout = setTimeout(() => {
+      if (isHovered) {
+        showSlide(getActiveIndex() + 1);
+        handleHoverStart(); // Restart 15s hover timer
+      }
+    }, 15000);
+  }
+
+  function handleHoverEnd() {
+    isHovered = false;
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      hoverTimeout = null;
+    }
+    startAutoplay();
+  }
   
   function handleManualInteraction(actionFn) {
     stopAutoplay();
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      hoverTimeout = null;
+    }
     actionFn();
-    startAutoplay(); // Reset timer smoothly
+    if (isHovered) {
+      handleHoverStart();
+    } else {
+      startAutoplay(); // Reset timer smoothly
+    }
   }
   
   // Event Bindings
   if (showcase) {
+    // Attach hover listener to visual wrappers (left-side image) to pause auto-slide
+    visualWrappers.forEach(wrapper => {
+      wrapper.addEventListener('mouseenter', handleHoverStart);
+      wrapper.addEventListener('mouseleave', handleHoverEnd);
+    });
+
     // Arrow Triggers
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
