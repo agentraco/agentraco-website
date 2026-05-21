@@ -33,6 +33,7 @@ jobs:
           cp index.html styles.css script.js privacy-policy.html terms-and-conditions.html .nojekyll dist/
           [ -f CNAME ] && cp CNAME dist/
           cp -R assets uploads dist/
+          cp *.mp4 *.jpeg 2>/dev/null dist/ || true
           
       - name: Configure Pages
         uses: actions/configure-pages@v5
