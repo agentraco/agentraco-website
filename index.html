@@ -8,6 +8,7 @@
   <meta property="og:title" content="AgentraCo — AI front-desk automation for local businesses" />
   <meta property="og:description" content="A 24/7 AI front desk that answers, captures, and routes customer requests so local businesses never miss an opportunity." />
   <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#faf7f2" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +18,10 @@
 
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body data-theme="agency" data-accent="kinetic" data-3d="subtle" data-density="compact" data-hero="combo">
+<body data-theme="agency" data-accent="kinetic" data-3d="subtle" data-density="compact">
+
+  <!-- scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
   <!-- ════════════ HEADER ════════════ -->
   <header class="site-header" role="banner">
@@ -37,7 +41,7 @@
         <li><a href="#how">How it works</a></li>
         <li><a href="#trust">Trust</a></li>
       </ul>
-      <div style="display:flex;gap:10px;align-items:center;">
+      <div class="nav-actions">
         <a class="nav-cta" href="#start-pilot">Start Pilot →</a>
         <button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false">
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
@@ -51,124 +55,153 @@
   <main id="top">
 
     <!-- ════════════ HERO ════════════ -->
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <span class="hero-eyebrow">
-            <span class="pulse-dot" aria-hidden="true"></span>
-            Now in private pilot · Onboarding select partners
-          </span>
-          <h1>AI agents that <em>answer, capture, and route</em>.</h1>
-          <p class="hero-sub">AgentraCo deploys business-specific AI agents that answer phones, capture requests, send confirmations, and route the rest to your team — across restaurants, salons, clinics, real estate, and more.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#start-pilot">
+    <section class="hero hero-cinematic-v5">
+      <div class="hero-video-container">
+        <video autoplay muted loop playsinline class="hero-video-bg">
+          <source src="main.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+        <div class="hero-ambient-glow"></div>
+      </div>
+
+      <div class="hero-inner-v5">
+        <div class="hero-content-v5">
+          <h1 class="hero-title-v5" data-reveal="up">
+            Answer. <span>✦</span> <em class="orange">Capture.</em> <span>✦</span> Route.
+          </h1>
+          
+          <p class="hero-sub-v5" data-reveal="up" style="--i:1">
+            AgentraCo deploys business-specific AI agents that answer phones, capture requests, send confirmations, and route the rest to your team.
+          </p>
+          
+          <div class="cta-row-v5" data-reveal="up" style="--i:2">
+            <a class="btn btn-hero-primary" href="#start-pilot">
               Start Pilot
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
             </a>
-            <a class="btn btn-ghost" href="#how">See How It Works</a>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-hidden="true">
-          <!-- 3D-tilted Pulse A behind -->
-          <div class="hero-logo-3d">
-            <svg class="pulse-a-svg" viewBox="0 0 52 58" fill="none">
-              <path d="M13 34 L20 34 L23 24 L29 42 L32 34 L39 34" class="ecg-shadow" transform="translate(0,1)" />
-              <path d="M4 56 L26 3" class="leg-l" />
-              <path d="M26 3 L48 56" class="leg-r" />
-              <path d="M13 34 L20 34 L23 24 L29 42 L32 34 L39 34" class="ecg-pulse" />
-            </svg>
-          </div>
-
-          <!-- Live call card foreground -->
-          <div class="hero-product">
-            <div class="hero-product-head">
-              <span class="live-dot"></span>
-              <span>Live call · Inbound · 0:42</span>
-              <span style="margin-left:auto;font-variant-numeric:tabular-nums;">+1 (214) 555 ·· 0193</span>
-            </div>
-            <div class="hero-product-body">
-              <div class="transcript-row caller">
-                <div class="who">Caller</div>
-                <div class="what">Hi, do you have a table for four tonight around eight?</div>
-              </div>
-              <div class="transcript-row ai">
-                <div class="who">Agent</div>
-                <div class="what">Yes — 8:00 or 8:15 are both open. Should I send a text to confirm?</div>
-              </div>
-              <div class="transcript-row caller">
-                <div class="who">Caller</div>
-                <div class="what">8:15 works. Two of us have a peanut allergy.</div>
-              </div>
-              <div class="hero-product-foot">
-                <span>Captured: party of 4 · 8:15 · allergy note → kitchen</span>
-                <span class="summary-tag">Routed</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ════════════ PROBLEM ════════════ -->
-    <section class="section" id="problem" data-reveal>
+    <!-- ════════════ PROBLEM: THE COST ════════════ -->
+    <!-- ════════════ THE COST OF A BUSY FRONT DESK ════════════ -->
+    <section class="section problem-cinematic-section" id="problem">
+      <div class="problem-grain-overlay"></div>
       <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">The cost of a busy front desk</span>
-          <h2 class="section-title">Every missed call is a <em>customer you lost</em> to a faster competitor.</h2>
-          <p class="section-sub">Local businesses lose revenue not because they lack demand, but because the front desk can't keep up — calls go unanswered, follow-ups slip, and requests scatter across notebooks, texts, and memory.</p>
+        
+        <!-- Top Row: Heading vs Video -->
+        <div class="problem-top-row-layout">
+          <!-- Left: Heading -->
+          <div class="problem-heading-col" data-reveal="left">
+            <span class="eyebrow orange">— THE COST OF A BUSY FRONT DESK</span>
+            <h2 class="problem-title">Every missed call is a <br><em>customer you lost</em> to <br>a faster competitor.</h2>
+            <p class="problem-intro-v5">Local businesses lose revenue not because they lack demand, but because the front desk can’t keep up — calls go unanswered, follow-ups slip, and requests scatter across notebooks, texts, and memory.</p>
+          </div>
+
+          <!-- Right: Cinematic Video -->
+          <div class="problem-video-col" data-reveal="right">
+            <div class="visual-frame-v5">
+              <!-- Video Background -->
+              <video autoplay muted loop playsinline class="video-bg-v5">
+                <source src="now.mp4" type="video/mp4">
+              </video>
+
+              <!-- Cinematic Glass Layer -->
+              <div class="video-glass-overlay"></div>
+            </div>
+          </div>
         </div>
-        <div class="problem-grid">
-          <div class="problem-card">
-            <div class="problem-num">01</div>
-            <h3>Calls go unanswered</h3>
-            <p>Staff are with customers, on break, or it's after hours. The phone keeps ringing and the lead walks.</p>
+
+        <!-- Bottom Row: 4 Cards -->
+        <div class="problem-bottom-grid-v5" data-reveal="up">
+          <!-- Card 01 -->
+          <div class="p-card-v5">
+            <div class="p-card-header">
+              <div class="p-icon-num-bubble">
+                <div class="p-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div>
+                <span class="p-num">01</span>
+              </div>
+              <div class="p-top-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v10m0 0l-3-3m3 3l3-3m-9 7h12"/></svg></div>
+            </div>
+            <div class="p-accent-line"></div>
+            <h4>Calls go unanswered</h4>
+            <p>Staff are with customers, on break, or it’s after hours. The phone keeps ringing and the lead walks.</p>
+            <div class="p-bottom-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10M17 7v10H7"/></svg></div>
           </div>
-          <div class="problem-card">
-            <div class="problem-num">02</div>
-            <h3>Requests get lost</h3>
+          <!-- Card 02 -->
+          <div class="p-card-v5">
+            <div class="p-card-header">
+              <div class="p-icon-num-bubble">
+                <div class="p-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v8m-3-2c0 4 6 4 6 0M5 13c2 5 5 8 7 8s5-3 7-8"/></svg></div>
+                <span class="p-num">02</span>
+              </div>
+              <div class="p-top-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v10m0 0l-3-3m3 3l3-3m-9 7h12"/></svg></div>
+            </div>
+            <div class="p-accent-line"></div>
+            <h4>Requests get lost</h4>
             <p>Reservations, callbacks, quotes, and service inquiries live in scribbled notes and never make it to the right person.</p>
+            <div class="p-bottom-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10M17 7v10H7"/></svg></div>
           </div>
-          <div class="problem-card">
-            <div class="problem-num">03</div>
-            <h3>Staff is overloaded</h3>
+          <!-- Card 03 -->
+          <div class="p-card-v5">
+            <div class="p-card-header">
+              <div class="p-icon-num-bubble">
+                <div class="p-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg></div>
+                <span class="p-num">03</span>
+              </div>
+              <div class="p-top-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v10m0 0l-3-3m3 3l3-3m-9 7h12"/></svg></div>
+            </div>
+            <div class="p-accent-line"></div>
+            <h4>Staff is overloaded</h4>
             <p>Repetitive FAQ calls — hours, parking, menu, pricing — pull your team away from the work that pays.</p>
+            <div class="p-bottom-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10M17 7v10H7"/></svg></div>
           </div>
-          <div class="problem-card">
-            <div class="problem-num">04</div>
-            <h3>Follow-up never happens</h3>
+          <!-- Card 04 -->
+          <div class="p-card-v5">
+            <div class="p-card-header">
+              <div class="p-icon-num-bubble">
+                <div class="p-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                <span class="p-num">04</span>
+              </div>
+              <div class="p-top-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v10m0 0l-3-3m3 3l3-3m-9 7h12"/></svg></div>
+            </div>
+            <div class="p-accent-line"></div>
+            <h4>Follow-up never happens</h4>
             <p>Without a system, leads sit cold. By the time anyone calls back, the customer has already booked elsewhere.</p>
+            <div class="p-bottom-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10M17 7v10H7"/></svg></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ════════════ SOLUTION ════════════ -->
-    <section class="section" id="solution" style="padding-top:0;" data-reveal>
-      <div class="solution">
+    <section class="section" id="solution" style="padding-top:0;">
+      <div class="solution" data-reveal="up">
+        <div class="solution-glow" aria-hidden="true"></div>
         <div class="solution-wrap">
-          <div class="section-head" style="margin-bottom:0;">
+          <div class="section-head" style="margin-bottom:0;" data-reveal="left">
             <span class="eyebrow">The AgentraCo system</span>
             <h2 class="section-title">An AI front desk that <em>answers, captures, and routes</em> — every time.</h2>
             <p class="section-sub">A business-specific agent trained on your hours, services, menu, FAQs, and intake forms — handing off cleanly to your team when a human is needed.</p>
           </div>
           <ol class="solution-steps">
-            <li class="step">
+            <li class="step" data-reveal="up" style="--i:0">
               <div class="step-num">1</div>
               <h4>Answer</h4>
               <p>Picks up 24/7 with your brand voice — never a robotic IVR.</p>
             </li>
-            <li class="step">
+            <li class="step" data-reveal="up" style="--i:1">
               <div class="step-num">2</div>
               <h4>Capture</h4>
               <p>Logs reservations, callbacks, quotes, and service requests in structured form.</p>
             </li>
-            <li class="step">
+            <li class="step" data-reveal="up" style="--i:2">
               <div class="step-num">3</div>
               <h4>Confirm</h4>
               <p>Sends SMS confirmations and reminders so customers and staff stay aligned.</p>
             </li>
-            <li class="step">
+            <li class="step" data-reveal="up" style="--i:3">
               <div class="step-num">4</div>
               <h4>Route</h4>
               <p>Important calls and edge cases go straight to the right person on your team.</p>
@@ -179,141 +212,308 @@
     </section>
 
     <!-- ════════════ INDUSTRIES ════════════ -->
-    <section class="section" id="industries" data-reveal>
+    <section class="section industries-section" id="industries">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head text-center" data-reveal="up">
           <span class="eyebrow">Built for any local business</span>
-          <h2 class="section-title">One platform, <em>seven industries</em>, and counting.</h2>
-          <p class="section-sub">Each agent is configured for the workflows of its industry — not a generic chatbot wrapped in a phone number.</p>
+          <h2 class="section-title mx-auto">One platform, <em>six specialized industries</em>, and counting.</h2>
+          <p class="section-sub mx-auto">Each agent is configured for the specific workflows of its industry — not a generic chatbot wrapped in a phone number.</p>
         </div>
-        <div class="types-grid">
-          <div class="type-card">
-            <div class="type-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8c0-2 2-3 8-3s8 1 8 3v1H4V8zm0 3h16v9c0 1-1 2-2 2H6c-1 0-2-1-2-2v-9zm5 3v3m6-3v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-            <h4>Restaurants</h4>
-            <p>Reservations, waitlist, hours, catering &amp; allergy notes.</p>
+      </div>
+
+      <div class="industries-showcase-container" data-reveal="up">
+        <div class="industries-showcase" id="industriesShowcase">
+          
+          <!-- Flanking Navigation Buttons -->
+          <button class="showcase-nav-btn prev" id="showcasePrevBtn" aria-label="Previous Industry">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+
+          <div class="showcase-slides">
+            
+            <!-- Slide 1: Education (Preloaded) -->
+            <div class="showcase-slide active" data-index="0">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="education.jpeg" alt="Education">
+                </div>
+              </div>
+              <div class="showcase-content">
+                <span class="showcase-tag">01 / ADMISSIONS & ACADEMICS</span>
+                <h3 class="showcase-name"><svg class="showcase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>Education</h3>
+                <p class="showcase-desc">Automates student enrollment inquiries, answers complex campus questions, routes tour requests, and supports current student needs 24/7.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Instantly schedule campus & department tours</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Sync with student information systems (SIS)</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Manage custom admission FAQs & enrollment inquiries</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Slide 2: Restaurants -->
+            <div class="showcase-slide" data-index="1">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="restaurant.jpeg" alt="Restaurants" loading="lazy">
+                </div>
+              </div>
+              <div class="showcase-content">
+                <span class="showcase-tag">02 / DISPATCH & BOOKING</span>
+                <h3 class="showcase-name"><svg class="showcase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v4M10 1v4M14 1v4"/></svg>Restaurants</h3>
+                <p class="showcase-desc">Picks up 24/7 with custom training. Books tables, updates reservations, and handles waitlists natively in your POS.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Natively synced with OpenTable & Resy</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>FAQ Answers (Menus, parking, dietary notes)</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Custom catering & group event inquiries</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Slide 3: Spa & Salon -->
+            <div class="showcase-slide" data-index="2">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="spa.jpeg" alt="Spa & Salon" loading="lazy">
+                </div>
+              </div>
+              <div class="showcase-content">
+                <span class="showcase-tag">03 / CALENDAR OPTIMIZATION</span>
+                <h3 class="showcase-name"><svg class="showcase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="9.8" y1="8.2" x2="22" y2="18"/><line x1="9.8" y1="15.8" x2="22" y2="6"/></svg>Spa & Salon</h3>
+                <p class="showcase-desc">Provides immediate appointment scheduling, handles stylist preferences, and sends rebooking links via SMS to maximize occupancy.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Smooth Mindbody & Boulevard sync</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>SMS reminders & cancellation fills</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Service packages & menu details</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Slide 4: Law Firms -->
+            <div class="showcase-slide" data-index="3">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="law.jpeg" alt="Law Firms" loading="lazy">
+                </div>
+              </div>
+              <div class="showcase-content">
+                <span class="showcase-tag">04 / LEGAL INTAKE & TRIAGE</span>
+                <h3 class="showcase-name"><svg class="showcase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7L3 17h4L5 7zm14 0l-2 10h4l-2-10z"/></svg>Law Firms</h3>
+                <p class="showcase-desc">Captures new case details instantly, schedules introductory client consultations, and handles emergency legal escalations with precision.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Fast lead capture & intake workflows</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Calendar sync for initial consultations</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Direct routing for active client emergencies</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Slide 5: Clinics -->
+            <div class="showcase-slide" data-index="4">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="clinics.jpeg" alt="Clinics" loading="lazy">
+                </div>
+              </div>
+              <div class="showcase-content">
+                <span class="showcase-tag">05 / CLINICAL INTAKE</span>
+                <h3 class="showcase-name"><svg class="showcase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Clinics</h3>
+                <p class="showcase-desc">Secure patient intake, medical scheduling, insurance collection, and answers to common FAQs on-demand.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>HIPAA-compliant handoff workflows</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Intake link delivery via secure text</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Refill requests & urgent routing</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Slide 6: Real Estate -->
+            <div class="showcase-slide" data-index="5">
+              <div class="showcase-visual-wrapper">
+                <div class="showcase-visual">
+                  <img src="realestate.jpeg" alt="Real Estate" loading="lazy">
+                </div>
+              </div>
+              <div class="showcase-content">
+                <span class="showcase-tag">06 / LEAD QUALIFICATION</span>
+                <h3 class="showcase-name"><svg class="showcase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Real Estate</h3>
+                <p class="showcase-desc">Qualifies warm buyer and tenant leads instantly, records custom preferences, and integrates directly with calendar tools to book property tours.</p>
+                <ul class="showcase-features">
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Instant property tour scheduling</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>CRM sync (HubSpot, Salesforce, KVCore)</span>
+                  </li>
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Lead scoring & profile logging</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
           </div>
-          <div class="type-card">
-            <div class="type-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v8m-3-2c0 4 6 4 6 0M5 13c2 5 5 8 7 8s5-3 7-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h4>Salons &amp; Spas</h4>
-            <p>Appointments, service menus, stylist preferences, rebooking.</p>
-          </div>
-          <div class="type-card">
-            <div class="type-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg></div>
-            <h4>Clinics</h4>
-            <p>Visit booking, intake forms, refill requests, after-hours triage.</p>
-          </div>
-          <div class="type-card">
-            <div class="type-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-            <h4>Real Estate</h4>
-            <p>Listing inquiries, tour scheduling, lead qualification, follow-ups.</p>
-          </div>
-          <div class="type-card">
-            <div class="type-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l3-3 5 1 8-8-3-3-8 8 1 5-3 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-            <h4>Home Services</h4>
-            <p>Estimate intake, dispatch routing, service-area screening.</p>
-          </div>
-          <div class="type-card">
-            <div class="type-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7l3-3h12l3 3v3a3 3 0 01-6 0 3 3 0 01-6 0 3 3 0 01-6 0V7zm2 4v9h14v-9" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-            <h4>Retail Shops</h4>
-            <p>Stock checks, holds, hours, special orders, store directions.</p>
-          </div>
-          <div class="type-card">
-            <div class="type-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v4H4zM4 14h10v6H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 14h4v6h-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-            <h4>Professional Services</h4>
-            <p>New-client intake, consultation booking, document requests.</p>
-          </div>
-          <div class="type-card" style="background:transparent;border-style:dashed;">
-            <div class="type-icon" style="background:transparent;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-            <h4>Your industry next</h4>
-            <p>Custom agents for niche local workflows — talk to us.</p>
-          </div>
+
+          <button class="showcase-nav-btn next" id="showcaseNextBtn" aria-label="Next Industry">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        <!-- Pagination Dots -->
+        <div class="showcase-pagination" id="showcasePagination">
+          <button class="showcase-dot active" data-index="0" aria-label="Go to slide 1"></button>
+          <button class="showcase-dot" data-index="1" aria-label="Go to slide 2"></button>
+          <button class="showcase-dot" data-index="2" aria-label="Go to slide 3"></button>
+          <button class="showcase-dot" data-index="3" aria-label="Go to slide 4"></button>
+          <button class="showcase-dot" data-index="4" aria-label="Go to slide 5"></button>
+          <button class="showcase-dot" data-index="5" aria-label="Go to slide 6"></button>
         </div>
       </div>
     </section>
 
-    <!-- ════════════ SERVICES ════════════ -->
-    <section class="section" id="services" style="background:var(--bg-soft);" data-reveal>
+    <!-- ════════════ OUR SERVICES — Circular Wheel ════════════ -->
+    <section class="section services-wheel" id="services">
+      <div class="sw-ambient" aria-hidden="true"></div>
       <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Services</span>
-          <h2 class="section-title">Front-desk, follow-through, and <em>every step in between</em>.</h2>
-          <p class="section-sub">Start with the AI receptionist. Layer on review management, lead capture, and follow-up automation as your business is ready.</p>
+        <header class="sw-header" data-reveal="up">
+          <span class="sw-eyebrow">SERVICES</span>
+          <h2 class="sw-title">Front-desk,<br>follow-through,<br>and <span class="sw-title-accent">every step in between.</span></h2>
+          <p class="sw-subtitle">Start with the AI receptionist. Layer on review management, lead capture, and follow-up automation as your business is ready.</p>
+        </header>
+
+        <div class="sw-wheel-assembly" data-reveal="up" id="serviceWheel">
+          <button type="button" class="sw-arrow sw-arrow--prev" aria-label="Previous service">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <div class="sw-stage">
+            <div class="sw-center-glow" aria-hidden="true"></div>
+            <svg class="sw-rings" viewBox="0 0 600 600" aria-hidden="true">
+              <circle class="sw-ring sw-ring--outer" cx="300" cy="300" r="268"/>
+              <circle class="sw-ring sw-ring--inner" cx="300" cy="300" r="218"/>
+              <circle class="sw-node sw-node--orange" cx="300" cy="32" r="4"/>
+              <circle class="sw-node sw-node--green" cx="489" cy="111" r="3.5"/>
+              <circle class="sw-node sw-node--orange" cx="568" cy="300" r="4"/>
+              <circle class="sw-node sw-node--green" cx="489" cy="489" r="3.5"/>
+              <circle class="sw-node sw-node--orange" cx="300" cy="568" r="4"/>
+              <circle class="sw-node sw-node--green" cx="111" cy="489" r="3.5"/>
+              <circle class="sw-node sw-node--orange" cx="32" cy="300" r="4"/>
+              <circle class="sw-node sw-node--green" cx="111" cy="111" r="3.5"/>
+            </svg>
+            <div class="sw-orbit-track" id="swOrbitTrack"></div>
+            <article class="sw-center-card" id="swCenterCard" aria-live="polite"></article>
+          </div>
+          <button type="button" class="sw-arrow sw-arrow--next" aria-label="Next service">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
         </div>
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="num">01 — Core</div>
-            <h4>24/7 AI Phone Receptionist</h4>
-            <p>Answers every call with your brand voice — day, night, weekends, holidays.</p>
+
+        <nav class="sw-dots" id="swDots" aria-label="Service navigation"></nav>
+
+        <div class="sw-highlights" data-reveal="up">
+          <div class="sw-highlight">
+            <div class="sw-highlight-icon sw-highlight-icon--orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+            </div>
+            <h4>Always On</h4>
+            <p>24/7 coverage so every call gets answered — day, night, weekends, holidays.</p>
           </div>
-          <div class="service-card">
-            <div class="num">02 — Core</div>
-            <h4>FAQ Handling</h4>
-            <p>Hours, location, parking, menu, pricing — answered instantly with your facts.</p>
-          </div>
-          <div class="service-card">
-            <div class="num">03 — Core</div>
-            <h4>Reservations &amp; Appointments</h4>
-            <p>Books, reschedules, and cancels through your existing systems.</p>
-          </div>
-          <div class="service-card">
-            <div class="num">04 — Core</div>
-            <h4>Request Capture</h4>
-            <p>Callbacks, catering, quotes, and service inquiries logged in structured form.</p>
-          </div>
-          <div class="service-card">
-            <div class="num">05 — Core</div>
-            <h4>SMS Confirmations</h4>
-            <p>Two-way SMS for confirmations, reminders, and clarifications.</p>
-          </div>
-          <div class="service-card">
-            <div class="num">06 — Core</div>
-            <h4>Staff Routing</h4>
-            <p>Important calls and edge cases reach the right person — never get dropped.</p>
-          </div>
-          <div class="service-card">
-            <div class="num">07 — Core</div>
-            <h4>Call Summaries &amp; Analytics</h4>
+          <div class="sw-highlight">
+            <div class="sw-highlight-icon sw-highlight-icon--green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <h4>Smarter Every Day</h4>
             <p>Every call summarized; trends surfaced so you can act on them.</p>
           </div>
-          <div class="service-card">
-            <div class="num">08 — Add-on</div>
-            <h4>Review Management</h4>
-            <p>Request, monitor, and respond to reviews where your customers actually look.</p>
+          <div class="sw-highlight">
+            <div class="sw-highlight-icon sw-highlight-icon--orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg>
+            </div>
+            <h4>Human When It Matters</h4>
+            <p>Important calls and edge cases reach the right person — never get dropped.</p>
           </div>
-          <div class="service-card">
-            <div class="num">09 — Add-on</div>
-            <h4>Lead Capture &amp; Follow-up</h4>
-            <p>Web forms, callback flows, and nurture sequences in one place.</p>
+          <div class="sw-highlight">
+            <div class="sw-highlight-icon sw-highlight-icon--green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <h4>Grows With You</h4>
+            <p>Layer on review management, lead capture, and follow-up as your business is ready.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ════════════ HOW IT WORKS / Benefits ════════════ -->
-    <section class="section" id="how" data-reveal>
+    <section class="section" id="how">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head text-center" data-reveal="up">
           <span class="eyebrow">Why teams switch</span>
-          <h2 class="section-title">Faster response, cleaner workflow, <em>more captured opportunity</em>.</h2>
+          <h2 class="section-title mx-auto">Faster response, cleaner workflow, <em>more captured opportunity</em>.</h2>
         </div>
         <div class="benefits-grid">
-          <div class="benefit">
-            <div class="benefit-stat"><em>0</em>missed</div>
+          <div class="benefit" data-reveal="up" style="--i:0">
+            <div class="benefit-stat"><em data-count="0">0</em>missed</div>
             <h4>Never miss a call</h4>
             <p>Every inbound is answered, even at 2am or during the lunch rush.</p>
           </div>
-          <div class="benefit">
-            <div class="benefit-stat"><em>1</em>place</div>
+          <div class="benefit" data-reveal="up" style="--i:1">
+            <div class="benefit-stat"><em data-count="1">1</em>place</div>
             <h4>One inbox, one source of truth</h4>
             <p>Calls, requests, and confirmations live in a single staff view.</p>
           </div>
-          <div class="benefit">
-            <div class="benefit-stat"><em>~2</em>min</div>
+          <div class="benefit" data-reveal="up" style="--i:2">
+            <div class="benefit-stat"><em data-count="2" data-prefix="~">~2</em>min</div>
             <h4>From call to staff alert</h4>
             <p>Important requests reach the right person before the customer reaches a competitor.</p>
           </div>
-          <div class="benefit">
-            <div class="benefit-stat"><em>24</em>/7</div>
+          <div class="benefit" data-reveal="up" style="--i:3">
+            <div class="benefit-stat"><em data-count="24">24</em>/7</div>
             <h4>Always-on coverage</h4>
             <p>No staffing gaps, no overflow voicemails, no after-hours dead air.</p>
           </div>
@@ -321,42 +521,95 @@
       </div>
     </section>
 
-    <!-- ════════════ TRUST ════════════ -->
-    <section class="section" id="trust" data-reveal>
-      <div class="trust">
-        <div class="trust-wrap">
-          <div>
-            <span class="eyebrow">Trust &amp; safety</span>
-            <h2 class="section-title">Practical automation, <em>not black-box magic</em>.</h2>
-            <p class="section-sub">Your front desk runs on your business's facts, your tone, and your escalation rules — with a human always one step away.</p>
+    <!-- ════════════ TRUST & SAFETY ════════════ -->
+    <section class="section trust-section" id="trust">
+      <div class="container">
+        <div class="trust-layout">
+          <!-- Left: Visual/Heading -->
+          <div class="trust-visual-side" data-reveal="left">
+            <div class="section-head">
+              <span class="eyebrow">Trust & safety</span>
+              <h2 class="trust-heading">Practical automation, <em>not black-box magic</em>.</h2>
+              <p class="section-sub">Your front desk runs on your business's facts, your tone, and your escalation rules — with a human always one step away.</p>
+            </div>
+            
+            <div class="trust-illustration-wrap">
+              <!-- Use the generated illustration -->
+              <img src="assets/trust-timeline-visual.png" class="trust-main-img" alt="AI Security Visual">
+              
+
+            </div>
           </div>
-          <div class="trust-list">
-            <div class="trust-item">
-              <div class="trust-check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div>
-                <h4>Human handoff, always</h4>
-                <p>The agent transfers, texts, or escalates the moment something falls outside its lane.</p>
+
+          <!-- Right: Timeline -->
+          <div class="trust-timeline-wrap" data-reveal="right">
+            <div class="trust-timeline">
+              <div class="timeline-line">
+                <div class="timeline-progress" id="trustProgress"></div>
               </div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div>
-                <h4>Business-specific knowledge</h4>
-                <p>Trained only on your hours, menu, services, FAQs, and policies — not generic web data.</p>
+
+              <!-- Step 1 -->
+              <div class="trust-step active">
+                <div class="step-node">
+                  <div class="step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                </div>
+                <div class="trust-card">
+                  <div class="trust-text">
+                    <h4>Human handoff, always</h4>
+                    <p>The agent transfers, texts, or escalates the moment something falls outside its lane.</p>
+                  </div>
+                  <div class="trust-glyph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div>
-                <h4>No fake confirmations</h4>
-                <p>If the agent isn't certain, it asks, captures, and routes — never invents an answer.</p>
+
+              <!-- Step 2 -->
+              <div class="trust-step">
+                <div class="step-node">
+                  <div class="step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                </div>
+                <div class="trust-card">
+                  <div class="trust-text">
+                    <h4>Business-specific knowledge</h4>
+                    <p>Trained only on your hours, menu, services, FAQs, and policies — not generic web data.</p>
+                  </div>
+                  <div class="trust-glyph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 14.5L11 16l4-4"/><circle cx="12" cy="12" r="10"/><path d="M8 2v4M16 2v4"/></svg>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div>
-                <h4>Clear summaries, every call</h4>
-                <p>Your team gets a structured recap and the audio — full visibility, zero guesswork.</p>
+
+              <!-- Step 3 -->
+              <div class="trust-step">
+                <div class="step-node">
+                  <div class="step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                </div>
+                <div class="trust-card">
+                  <div class="trust-text">
+                    <h4>No fake confirmations</h4>
+                    <p>If the agent isn't certain, it asks, captures, and routes — never invents an answer.</p>
+                  </div>
+                  <div class="trust-glyph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="trust-step">
+                <div class="step-node">
+                  <div class="step-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                </div>
+                <div class="trust-card">
+                  <div class="trust-text">
+                    <h4>Fully secure & compliant</h4>
+                    <p>Enterprise-grade encryption and strict adherence to privacy standards and local regulations.</p>
+                  </div>
+                  <div class="trust-glyph">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/><path d="M7 11h10"/></svg>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -366,14 +619,14 @@
 
     <!-- ════════════ FINAL CTA ════════════ -->
     <section class="final-cta" id="cta">
-      <div class="final-cta-inner">
+      <div class="final-cta-inner" data-reveal="up">
         <h2>Ready to put your <em>front desk on autopilot</em>?</h2>
         <p>We're onboarding a small group of pilot partners. Tell us about your business and we'll set up a tailored agent for your first 30 days.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#start-pilot">Start Pilot
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a class="btn btn-ghost" href="#how" style="color: rgb(255, 255, 255); line-height: 1.4">See How It Works</a>
+          <a class="btn btn-ghost" href="#how">See How It Works</a>
         </div>
         <p class="final-cta-note">Limited pilot slots · No credit card required</p>
       </div>
@@ -381,9 +634,9 @@
   </main>
 
   <!-- ════════════ START PILOT FORM ════════════ -->
-  <section class="section start-pilot-section" id="start-pilot" data-reveal>
+  <section class="section start-pilot-section" id="start-pilot">
     <div class="container">
-      <div class="start-pilot-card">
+      <div class="start-pilot-card" data-reveal="up">
         <div class="section-head" style="margin-bottom:0;">
           <span class="eyebrow">Start your pilot</span>
           <h2 class="section-title">Tell us about your business.</h2>
@@ -391,15 +644,15 @@
         </div>
 
         <div class="pilot-details-grid">
-          <div class="pilot-detail">
+          <div class="pilot-detail" style="--i:0">
             <h4>Who this is for</h4>
             <p>Small and medium-sized businesses that want to answer more calls, capture more requests, and reduce front-desk overload.</p>
           </div>
-          <div class="pilot-detail">
+          <div class="pilot-detail" style="--i:1">
             <h4>What happens next</h4>
             <p>We review your business details, understand your workflow, and recommend the right AI receptionist setup.</p>
           </div>
-          <div class="pilot-detail">
+          <div class="pilot-detail" style="--i:2">
             <h4>Portal access</h4>
             <p>Customer portal access is provided after onboarding, so your team can view requests, summaries, and activity.</p>
           </div>
@@ -410,7 +663,7 @@
             Open Pilot Request Form
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a class="btn btn-ghost" href="mailto:team@agentraco.com?subject=AgentraCo%20Pilot%20Request&body=Business%20name%3A%20%0AIndustry%3A%20%0APhone%3A%20%0AAnything%20else%3A%20">
+          <a class="btn btn-ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=team@agentraco.com" target="_blank" rel="noopener noreferrer">
             Email us instead
           </a>
         </div>
@@ -418,54 +671,138 @@
     </div>
   </section>
 
-  <!-- ════════════ FOOTER ════════════ -->
-  <footer class="footer">
+  <!-- ════════════ FOOTER WAVE DIVIDER ════════════ -->
+  <div class="footer-wave-wrapper" aria-hidden="true">
+    <svg class="footer-wave-svg" viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Soft Shadow Layer 1 (blur depth) -->
+      <path d="M0,34 C240,74 480,14 720,44 C960,74 1200,24 1440,49 L1440,80 L0,80 Z" fill="rgba(0, 0, 0, 0.06)" opacity="0.8"></path>
+      <!-- Soft Shadow Layer 2 (fine depth) -->
+      <path d="M0,32 C240,72 480,12 720,42 C960,72 1200,22 1440,47 L1440,80 L0,80 Z" fill="rgba(0, 0, 0, 0.04)" opacity="0.9"></path>
+      <!-- Main Wave Layer -->
+      <path d="M0,30 C240,70 480,10 720,40 C960,70 1200,20 1440,45 L1440,80 L0,80 Z" fill="#d6d1ca"></path>
+    </svg>
+  </div>
+
+  <!-- ════════════ FOOTER (v6 Premium Dark) ════════════ -->
+  <footer class="footer footer-v6">
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="brand">
           <svg class="brand-mark" viewBox="0 0 52 58" fill="none" aria-hidden="true">
-            <path d="M4 56 L26 3" stroke="#06091E" stroke-width="6" stroke-linecap="round" />
+            <path d="M4 56 L26 3" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round" />
             <path d="M26 3 L48 56" stroke="#00E87A" stroke-width="6" stroke-linecap="round" />
             <path d="M13 34 L20 34 L23 24 L29 42 L32 34 L39 34" stroke="#FF5722" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
           </svg>
-          <span class="brand-name" style="color:var(--ink)">Agentra<span class="co">Co</span></span>
+          <span class="brand-name">Agentra<span class="co">Co</span></span>
         </div>
-        <p>AI front-desk automation for local businesses. Answers, captures, and routes customer requests — 24/7.</p>
+        <p class="brand-desc">AI front-desk automation for local businesses. Answers, captures, and routes customer requests — <span class="green">24/7</span>.</p>
       </div>
+
       <div class="footer-col">
-        <h5>Product</h5>
+        <h5 class="neon-head">Product</h5>
         <ul>
-          <li><a href="#solution">Solution</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#trust">Trust &amp; safety</a></li>
+          <li><a href="#solution"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6m-5 4h4m1.44-19.44a7 7 0 00-9.88 9.88 10 10 0 012.24 3.56h5.2a10 10 0 012.24-3.56 7 7 0 000-9.88z"/></svg> Solution</a></li>
+          <li><a href="#services"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg> Services</a></li>
+          <li><a href="#how"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> How it works</a></li>
+          <li><a href="#trust"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Trust & safety</a></li>
         </ul>
       </div>
+
       <div class="footer-col">
-        <h5>Industries</h5>
+        <h5 class="neon-head">Industries</h5>
         <ul>
-          <li><a href="#industries">Restaurants</a></li>
-          <li><a href="#industries">Salons &amp; clinics</a></li>
-          <li><a href="#industries">Real estate</a></li>
-          <li><a href="#industries">Home services</a></li>
+          <li><a href="#industries"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v4M10 1v4M14 1v4"/></svg> Restaurants</a></li>
+          <li><a href="#industries"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 012-2h2m14 4V5a2 2 0 00-2-2h-2m-14 14v2a2 2 0 002 2h2m14-2v2a2 2 0 01-2 2h-2M12 7v10m-3-3l3 3 3-3"/></svg> Salons & clinics</a></li>
+          <li><a href="#industries"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Real estate</a></li>
+          <li><a href="#industries"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Home services</a></li>
         </ul>
       </div>
+
       <div class="footer-col">
-        <h5>Company</h5>
+        <h5 class="neon-head">Company</h5>
         <ul>
-          <li><a href="mailto:team@agentraco.com">Contact</a></li>
-          <li><a href="#trust">Trust &amp; Safety</a></li>
-          <li><a href="#start-pilot">Start Pilot</a></li>
-          <li><a href="https://portal.agentraco.com/login/" target="_blank" rel="noopener noreferrer">Customer Portal</a></li>
+          <li><a href="#trust"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Trust & Safety</a></li>
+          <li><a href="#start-pilot"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09zM12 15l-3-3m5.5 2L11 10.5m8.5 2L16 9m-1.5-3.5L19 10l-1.1 1.1c-.13.13-.3.13-.43 0l-3.37-3.37a.3.3 0 010-.43l1.1-1.1z"/><path d="M22 2s-1.5 1.5-2 3l-1.5-1.5L22 2z"/></svg> Start Pilot</a></li>
+          <li><a href="https://portal.agentraco.com/login/" target="_blank" rel="noopener noreferrer"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Customer Portal</a></li>
+          <li><a href="privacy-policy.html"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> Privacy Policy</a></li>
+          <li><a href="terms-and-conditions.html"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg> Terms &amp; Conditions</a></li>
         </ul>
-        <p class="footer-note">Customer portal access is provided after onboarding.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5 class="neon-head">Socials</h5>
+        <ul class="social-links-v6">
+          <li><a href="javascript:void(0)" onclick="openContactModal()"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Contact</a></li>
+          <li><a href="https://www.instagram.com/agentraco" target="_blank" rel="noopener noreferrer"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/agentra-co-bb8a62408" target="_blank" rel="noopener noreferrer"><svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> LinkedIn</a></li>
+        </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 AgentraCo · AI services &amp; solutions</span>
-      <span>AI That Thinks. Agents That Work. Results That Scale.</span>
+    
+    <div class="footer-divider-v6"></div>
+
+    <div class="footer-bottom-v6">
+      <div class="footer-copyright-v6">
+        <span>© 2026 <span class="orange-text">AgentraCo</span> <span class="green-dot"></span> AI services & solutions</span>
+      </div>
+      <div class="footer-tagline-v6">
+        <span class="white-txt">AI That Thinks.</span> 
+        <span class="green-txt">Agents That Work.</span> 
+        <span class="orange-txt">Results That Scale.</span>
+      </div>
     </div>
   </footer>
+
+  <!-- ════════════ CONTACT MODAL ════════════ -->
+  <div class="contact-modal" id="contactModal" aria-hidden="true">
+    <div class="modal-overlay" onclick="closeContactModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeContactModal()" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      
+      <div class="modal-head">
+        <h2>Contact AgentraCo</h2>
+        <p>Reach out to our team anytime.</p>
+      </div>
+
+      <div class="modal-body">
+        <a href="tel:+919652933925" class="contact-row">
+          <div class="contact-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="contact-info">
+            <span class="label">Phone</span>
+            <span class="value">+91 965-293-3925</span>
+          </div>
+        </a>
+
+        <a href="mailto:team@agentraco.com" class="contact-row">
+          <div class="contact-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-info">
+            <span class="label">Email</span>
+            <span class="value">team@agentraco.com</span>
+          </div>
+        </a>
+
+        <div class="contact-row no-click">
+          <div class="contact-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-info">
+            <span class="label">Location</span>
+            <span class="value">India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-foot">
+        <div class="glow-border"></div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
